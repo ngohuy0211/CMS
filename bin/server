@@ -1,0 +1,4 @@
+const app = require('../app.js')
+app.listen(1000, function(){
+    console.log('Server run on port 1000')
+})
