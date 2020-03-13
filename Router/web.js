@@ -1,6 +1,10 @@
 const router = require('express').Router()
-const test = require('../Apps/Controllers/test')
-router.get('/', test.test)
-router.post('/', test.posttest)
+const HomeController = require('../Apps/Controllers/Home.controller')
+const auth = require('../Apps/midderware/au.midderware')
+
+router.get('/', HomeController.Home_Page)
+router.get('/login', HomeController.GetLogin)
+router.post('/login', HomeController.PostLogin)
+
 
 module.exports = router

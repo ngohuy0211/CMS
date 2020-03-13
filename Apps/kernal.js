@@ -1,4 +1,4 @@
-module.exports = (app, express, Body_parser, session) =>{
+module.exports = (app, express, Body_parser) =>{
 
     app.use(Body_parser.urlencoded({ extended: true }))
     

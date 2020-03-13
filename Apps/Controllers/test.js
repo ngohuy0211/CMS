@@ -14,8 +14,34 @@ async function posttest(req, res)
         else console.log('success')
     })
 }
+function getLogin(req, res)
+{
+    res.render('login', {data:{}})
+}
+function posLogin(req, res)
+{
+    let email = req.body.email
+    let password = req.body.password
+    Models.UserModel.findOne({User_mail: email}).exec((err, docs)=>{
+        if(docs === null)
+       {
+           let error = 'Wrong Email'
+           res.render('login', {data:{error:error}})
+           return
+        }
+       if(docs.User_pass !== password)
+       {
+        res.render('login', {error:['Wrong password!'], values: req.body})
+        return
+       }
+        res.cookie('userId', docs._id, {maxAge: 9999})
+       res.redirect('/')
+    })
+}
 module.exports = {
     posttest: posttest,
-    test: test
+    test: test,
+    getLogin: getLogin,
+    posLogin: posLogin
 
 }
