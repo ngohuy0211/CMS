@@ -1,0 +1,101 @@
+<%include Views/layouts/header.ejs %>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Manage Account
+            <small>Control panel</small>
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <main class="main-container container">
+        <div class="view-account">
+            <section class="module">
+                <div class="module-inner">
+                    <div class="content-panel">
+                        <form class="form-horizontal">
+                            <fieldset class="fieldset">
+                                <h3 class="fieldset-title">Information Of Account</h3>
+                                <div class="form-group avatar">
+                                    <figure class="figure col-md-2 col-sm-3 col-xs-12">
+                                        <img class="img-rounded img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                                    </figure>
+                                    <div class="form-inline col-md-10 col-sm-9 col-xs-12">
+                                        <input type="file" class="file-uploader pull-left">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Role</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" value="Trainer">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Full Name</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" value="Ngo Quang Huy">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Email</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="email" class="form-control" value="Huynqgch17251@fpt.edu.vn">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Password</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="password" class="form-control" value="ngohuy123">
+                                    </div>
+                                </div>
+    
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Address</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" value="Tan Hoi - Dan Phuong - Ha Noi">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Gender</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" value="Male">
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset class="fieldset">
+                                <div class="form-group">
+                                    <label class="col-md-2  col-sm-3 col-xs-12 control-label">Date</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control" value="02-11-1999">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12">
+                                        <input type="number" class="form-control" value="0385296540">
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <hr>
+                            <div class="form-group">
+                                <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                    <input class="btn btn-primary" type="submit" value="Update Information">
+                                    <a class="btn btn-secondary" href="#">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- /.content -->
+</div>
+
+<%include Views/layouts/footer.ejs%>

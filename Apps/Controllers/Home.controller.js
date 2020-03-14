@@ -27,7 +27,7 @@ function PostLogin(req, res)
         return
        }
         res.cookie('userId', docs._id, {maxAge: 9999})
-       res.send('hello')
+        res.redirect('/staff')
     })
 }
 module.exports = {
