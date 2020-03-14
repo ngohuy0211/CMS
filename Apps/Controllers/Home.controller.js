@@ -13,8 +13,6 @@ function PostLogin(req, res)
 {
     let email = req.body.email
     let password = req.body.password
-    console.log(email)
-    console.log(password)
     Models.UserModel.findOne({User_mail: email}).exec((err, docs)=>{
         if(docs === null)
        {
