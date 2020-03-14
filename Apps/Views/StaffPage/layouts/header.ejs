@@ -23,7 +23,7 @@
 <div class="wrapper">
 <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="/staff" class="logo">
         <span class="logo-mini"><b>STF</b></span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>STAFF</b></span>
@@ -39,30 +39,32 @@
             <ul class="nav navbar-nav">
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
+                    <%for(x in data.user){%>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="static/Admin/image/user2-160x160.jpg" class="user-image" alt="User Image">
-                        <span class="hidden-xs">STAFF</span>
+                        <img <%if(data.user[x].User_avatar == ''){%>src="static/Admin/image/user2-160x160.jpg"<%} else{%>src="static/Admin/image/<%=data.user[x].User_avatar%>"<%}%>  class="user-image" alt="User Image">
+                        <span class="hidden-xs"><%=data.user[x].User_full%></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User avatar -->
                         <li class="user-header">
-                            <img src="static/Admin/image/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img <%if(data.user[x].User_avatar == ''){%>src="static/Admin/image/user2-160x160.jpg"<%} else{%>src="static/Admin/image/<%=data.user[x].User_avatar%>"<%}%>  class="user-image" alt="User Image">
 
                             <p>
-                                STAFF
                                 <small>Chức vụ</small>
+                                        STAFF
                             </p>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="/staff/profile/:<%=data.user[x]._id%>" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <a href="#" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>
+                    <%}%>
                 </li>
             </ul>
         </div>

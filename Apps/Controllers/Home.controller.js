@@ -5,7 +5,7 @@ function Home_Page(req, res)
 {
     res.render('HomePage/index')
 }
-function GetLogin(req, res)
+function GetLogin(req, res, next)
 {
     res.render('HomePage/login', {data:{}})
 }
@@ -26,8 +26,14 @@ function PostLogin(req, res)
         res.render('HomePage/login', {data:{error:error}})
         return
        }
-        res.cookie('userId', docs._id, {maxAge: 9999})
-        res.redirect('/staff')
+        
+        Models.RoleModel.findById({_id: docs.User_role}).exec((err, role)=>{
+            if(role.roleName === 'Staff')
+            {
+                res.cookie('userId', docs._id, {maxAge: 10000})
+                return res.redirect('/staff')
+            }
+        })
     })
 }
 module.exports = {

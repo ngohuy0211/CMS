@@ -6,6 +6,6 @@ const auth = require('../Apps/midderware/au.midderware')
 router.get('/', HomeController.Home_Page)
 router.get('/login', HomeController.GetLogin)
 router.post('/login', HomeController.PostLogin)
-router.get('/staff', auth.reqAuth, StaffController.Page_Index, auth.CheckRole)
+router.get('/staff',auth.reqAuth, auth.CheckRole, StaffController.Page_Index)
 
 module.exports = router
