@@ -33,6 +33,11 @@ function PostLogin(req, res)
                 res.cookie('userId', docs._id, {maxAge: 10000})
                 return res.redirect('/staff')
             }
+            if(role.roleName === 'Student')
+            {
+                res.cookie('userId', docs._id, {maxAge: 10000})
+                return res.redirect('/')
+            }
         })
     })
 }
