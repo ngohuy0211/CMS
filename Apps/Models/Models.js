@@ -25,14 +25,16 @@ const FacultySchema = new Schema({
 })
 const SubjectSchema = new Schema({
     _id: {type: mongoose.Schema.ObjectId, auto: true},
+    Subject_ID: String,
     Subject_name: {type: String, unique: true},
     Subject_detail: String,
-    Create_at: Date,
-    Update_at: Date,
+    Create_at: {type: Date, default: Date.now},
+    Update_at: {type: Date, default: Date.now},
     Faculty_id: {type: mongoose.Schema.ObjectId, ref: 'Faculty'}
 })
 const ClassSchema = new Schema({
     _id: {type: mongoose.Schema.ObjectId, auto: true},
+    Class_ID: {type: String, unique: true},
     Class_name: {type: String, unique: true},
     Create_at: Date,
     Update_at: Date,

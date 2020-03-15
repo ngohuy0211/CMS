@@ -30,7 +30,7 @@ async function CheckStudent(req, res, next){
 async function CheckStaff(req, res, next){
     if(!req.cookies.userId)
     {
-        res.redirect('/login')
+        return res.redirect('/login')
     }
     let user = await Models.UserModel.findById({_id: req.cookies.userId})
     Models.RoleModel.findById({_id: user.User_role}).exec((err, role)=>{

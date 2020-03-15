@@ -30,12 +30,17 @@ function PostLogin(req, res)
         Models.RoleModel.findById({_id: docs.User_role}).exec((err, role)=>{
             if(role.roleName === 'Staff')
             {
-                res.cookie('userId', docs._id, {maxAge: 10000})
+                res.cookie('userId', docs._id, {maxAge: 300000})
                 return res.redirect('/staff')
             }
             if(role.roleName === 'Student')
             {
-                res.cookie('userId', docs._id, {maxAge: 10000})
+                res.cookie('userId', docs._id, {maxAge: 300000})
+                return res.redirect('/')
+            }
+            if(role.roleName === 'Tutor')
+            {
+                res.cookie('userId', docs._id, {maxAge: 300000})
                 return res.redirect('/')
             }
         })
