@@ -17,12 +17,12 @@ function Faculty_Page(req, res)
 async function Subject_Page(req, res)
 {
     let Faculty = req.params.faculty_id
-    let subject = await Models.SubjectModel.find({Faculty_id: Faculty})
+    let subject = await Models.SubjectModel.find({})
     return res.render('StaffPage/Subject/index', {data:{subject:subject}})
 }
 async function Class_Page(req, res)
 {
-    let Class = await Models.ClassModel.find({Subject_id:req.params.subject_id})
+    let Class = await Models.ClassModel.find({})
     res.render('StaffPage/class/index', {data:{class:Class}})
 }
 module.exports = {

@@ -7,8 +7,9 @@ router.get('/', HomeController.Home_Page)
 router.get('/login', HomeController.GetLogin)
 router.post('/login', HomeController.PostLogin)
 router.get('/staff',auth.reqAuth, auth.CheckRole, StaffController.Page_Index)
-router.get('/subject/:faculty_id', StaffController.Subject_Page)
-router.get('/class/:subject_id', auth.reqAuth, auth.CheckRole, StaffController.Class_Page)
+router.get('/Faculty/subject/:faculty_id', StaffController.Subject_Page)
+router.get('/Faculty/subject/class/:subject_id', auth.reqAuth, auth.CheckRole, StaffController.Class_Page)
 router.get('/Faculty',auth.reqAuth, auth.CheckRole, StaffController.Faculty_Page)
-
+router.get('/class', StaffController.Class_Page)
+router.get('/subject', StaffController.Subject_Page)
 module.exports = router
