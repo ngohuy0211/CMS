@@ -26,7 +26,6 @@ function PostLogin(req, res)
         res.render('HomePage/login', {data:{error:error}})
         return
        }
-       res.locals.user = req.session.user
         Models.RoleModel.findById({_id: docs.User_role}).exec((err, role)=>{
             if(role.roleName === 'Staff')
             {
