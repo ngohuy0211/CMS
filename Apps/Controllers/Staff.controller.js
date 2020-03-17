@@ -3,9 +3,7 @@ const mongoose = require('../../common/database')()
 
 async function Page_Index(req, res)
 {
-    let userid = req.cookies.userId
-    let user = await Models.UserModel.find({_id: userid})
-    return res.render('StaffPage/index', {data:{user:user}})
+    return res.render('StaffPage/index')
 }
 function Faculty_Page(req, res)
 {
