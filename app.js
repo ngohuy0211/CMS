@@ -1,9 +1,10 @@
 const express = require('express')
 const app = express()
+const session = require('express-session')
 const router = express.Router()
 const cookieParser = require('cookie-parser')
 const Body_parser = require('body-parser')
-require('./Apps/kernal')(app, express, Body_parser)
+require('./Apps/kernal')(app, express, Body_parser, session)
 app.use(cookieParser())
 app.use('/', require('./Router/web'))
 module.exports = app
