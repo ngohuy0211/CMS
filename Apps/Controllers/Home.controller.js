@@ -45,8 +45,14 @@ function PostLogin(req, res)
         })
     })
 }
+function LogOut(req, res)
+{
+    res.clearCookie('userId')
+    res.redirect('/')
+}
 module.exports = {
     Home_Page: Home_Page,
     GetLogin: GetLogin,
-    PostLogin: PostLogin
+    PostLogin: PostLogin,
+    LogOut: LogOut
 }

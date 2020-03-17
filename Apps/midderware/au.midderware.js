@@ -13,8 +13,7 @@ async function checkAth(req, res, next)
             res.redirect('/login')
             return
         }
-        req.session.user = docs
-        res.locals.user = req.session.user
+        res.locals.user = docs
        return next()
     })
 
