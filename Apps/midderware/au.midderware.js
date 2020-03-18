@@ -1,7 +1,9 @@
 const Models = require('../Models/Models')
 const mongoose = require('../../common/database')()
+const jwt = require('jsonwebtoken')
 async function checkAth(req, res, next)
 {
+    if(req.header && req.header.authorization && String(req.header.authorization.split(' ')[0]).toLowerCase() == 'bearer')
     if(!req.cookies.userId)
     {
         res.redirect('/login')

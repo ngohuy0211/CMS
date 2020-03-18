@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,68 +8,86 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="static/Admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="static/Admin/css/all.min.css">
-    <link rel="stylesheet" href="static/Admin/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.2/css/adminlte.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="static/Admin/css/_all-skins.min.css">
-    <link rel="stylesheet" href="static/Admin/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.18/css/skins/_all-skins.min.css">
     <!-- Google Font -->
     <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
- </head>
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        #dropd {
+            width: 100%;
+            padding: 5px;
+            height: 80px;
+            display: inline-block;
+        }
+
+        #dropd li {
+            padding-left: 30px;
+        }
+
+        #dropd li:hover {
+            background-color: #1c1c1c;
+        }
+    </style>
+</head>
+
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-<header class="main-header">
-    <!-- Logo -->
-    <a href="/staff" class="logo">
-        <span class="logo-mini"><b>STF</b></span>
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>STAFF</b></span>
-    </a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-        <!-- Sidebar toggle button-->
-        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <i class="fas fa-bars"></i>
-        </a>
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="/staff" class="logo">
+                <span class="logo-mini"><b></b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>STAFF</b></span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <i class="fas fa-bars"></i>
+                </a>
 
-        <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-                <!-- User Account: style can be found in dropdown.less -->
-                <li class="dropdown user user-menu">
-                    <%for(x in locals.user){%>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img <%if(locals.user[x].User_avatar == ''){%>src="static/Admin/image/user2-160x160.jpg"<%} else{%>src="static/Admin/image/<%=locals.user[x].User_avatar%>"<%}%>  class="user-image" alt="User Image">
-                        <span class="hidden-xs"><%=locals.user[x].User_full%></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <!-- User avatar -->
-                        <li class="user-header">
-                            <img <%if(locals.user[x].User_avatar == ''){%>src="static/Admin/image/user2-160x160.jpg"<%} else{%>src="static/Admin/image/<%=locals.user[x].User_avatar%>"<%}%>  class="user-image" alt="User Image">
-
-                            <p>
-                                <small>Chức vụ</small>
-                                        STAFF
-                            </p>
-                        </li>
-                        <!-- Menu Footer-->
-                        <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="/staff/profile/:<%=locals.user[x]._id%>" class="btn btn-default btn-flat">Profile</a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
-                            </div>
-                        </li>
-                    </ul>
-                  <%}%>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <%for(x in locals.user){%>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img <%if(locals.user[x].User_avatar == ''){%>src="static/Admin/image/user2-160x160.jpg"
+                                    <%} else{%>src="/static/Admin/image/<%=locals.user[x].User_avatar%>" <%}%>  class="user-image" alt="User Image">
+                            <span class="hidden-xs"><%=locals.user[x].User_full%></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User avatar -->
+                                <li class="user-header">
+                                    <img <%if(locals.user[x].User_avatar == ''){%>src="static/Admin/image/user2-160x160.jpg"
+                                        <%} else{%>src="static/Admin/image/<%=locals.user[x].User_avatar%>" <%}%>  class="user-image" alt="User Image">
+    
+                                <p>
+                                    <small>Chức vụ</small>
+                                            STAFF
+                                </p>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="/staff/profile/:<%=locals.user[x]._id%>"
+                                        class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                    <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
+                </div>
                 </li>
-            </ul>
-        </div>
-    </nav>
-</header>
-<%-include ('sidebar_left')-%>
-
+                </ul>
+                <%}%>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <%-include ('sidebar_left')-%>

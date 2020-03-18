@@ -4,9 +4,6 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <%for(x in locals.user){%>
-            <div class="pull-left image">
-                <img <%if(locals.user[x].User_avatar == ''){%>src="static/Admin/image/user2-160x160.jpg"<%} else{%>src="static/Admin/image/<%=locals.user[x].User_avatar%>"<%}%>  class="user-image" alt="User Image">
-            </div>
             <div class="pull-left info">
                 <p><%=locals.user[x].User_full%></p>
                 <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
@@ -25,6 +22,11 @@
                 <a href="/Faculty" onclick="myFunction()">
                     <i class="fa fa-code"></i> <span >Manage Factualy</span>
                 </a>
+                <ul id="dropd" style="list-style: none;">
+                    <%for(x in locals.faculty){%>
+                    <li style="margin-top: 10px"><a href="/subject/<%=locals.faculty[x]._id%>"><%=locals.faculty[x].Faculty_name%></a></li>
+                    <%}%>
+                </ul>
             </li>
         </ul>
     </section>
