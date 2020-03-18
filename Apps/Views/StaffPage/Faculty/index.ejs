@@ -5,16 +5,15 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Manage Class
-            <small>Control panel</small>
+            Faculty Management
         </h1>
     </section>
 
 <!-- Main content -->
 <section class="content">
-    <h1>Class</h1>
+    <h1>Faculties</h1>
     <a href="#" class="btn btn-primary">
-       <i class="fa fa-plus"></i> Create
+       <i class="fa fa-plus"></i> Create Faculty
     </a>
     <br />
     <div class="table-responsive">
@@ -22,6 +21,7 @@
             <tr>
                 <th>Faculty name</th>
                 <th>Faculty des</th>
+                <th></th>
             </tr>
             <tr>
                 <%for(x in data.faculty){%>
@@ -32,15 +32,15 @@
                     <%=data.faculty[x].Faculty_des%>
                 </td>
                 <td>
-                    <a href="/subject/<%=data.faculty[x]._id%>" title="Detail">
+                    <a href="/Faculty/subject/<%=data.faculty[x]._id%>" title="Subject">
                         Subject
                         <i class="fa fa-eye"></i>
                     </a> &nbsp;
-                    <a href="/Faculty/<%=data.faculty[x]._id%>" title="Update">
+                    <a href="/Faculty/subject/<%=data.faculty[x]._id%>" title="Update">
                         Update
                         <i class="fa fa-pencil"></i>
                     </a> &nbsp;
-                    <a href="/Faculty/<%=data.faculty[x]._id%>" title="Delete" onclick="return confirm('Are you sure delete?')">
+                    <a href="/Faculty/subject/<%=data.faculty[x]._id%>" title="Delete" onclick="return confirm('Are you sure delete?')">
                         Delete
                         <i class="fa fa-trash"></i>
                         </a>

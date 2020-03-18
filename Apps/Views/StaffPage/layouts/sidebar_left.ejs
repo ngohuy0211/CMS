@@ -12,34 +12,20 @@
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">STAFF FUNCTION</li>
+            <li class="header">STAFF FUNCTION</li><br>
             <li>
                 <a href="#">
-                    <i class="fa fa-th"></i> <span>Manage Account</span>
+                    <i class="fa fa-th"></i> <span>Account Management</span>
                 </a>
-            </li>
+            </li><br>
             <li>
-                <a href="/Faculty" onclick="myFunction()">
-                    <i class="fa fa-code"></i> <span >Manage Factualy</span>
-                </a>
-                <ul id="dropd" style="list-style: none;">
-                    <%for(x in locals.faculty){%>
-                    <li style="margin-top: 10px"><a href="/subject/<%=locals.faculty[x]._id%>"><%=locals.faculty[x].Faculty_name%></a></li>
-                    <%}%>
-                </ul>
+                <a href="/Faculty"class="fa fa-code">Faculty Management</a>
+            </li><br>
+            <li>
+                <a href="/Faculty" class="fa fa-code">Interactive Management Of Tutor</a>
             </li>
         </ul>
     </section>
     <!-- Script for dropdown -->
-    <script type="text/javascript">
-        function myFunction() {
-          var x = document.getElementById('dropd');
-          if (x.style.display == 'none') {
-              x.style.display = 'block';
-          } else {
-              x.style.display = 'none';
-          }
-        }
-    </script>
     <!-- /.sidebar -->
 </aside>
