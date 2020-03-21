@@ -8,7 +8,7 @@ function Home_Page(req, res) {
 function GetLogin(req, res, next) {
   res.render("HomePage/login", { data: {} });
 }
-function PostLogin(req, res) {
+async function PostLogin(req, res) {
   let email = req.body.email;
   let password = req.body.password;
   Models.UserModel.findOne({ User_mail: email }).exec((err, docs) => {
@@ -22,12 +22,16 @@ function PostLogin(req, res) {
       res.render("HomePage/login", { data: { error: error } });
       return;
     } else {
-      // let token = jwt.sign({ name: docs.User_full }, "Team2DevelopmentCms", {
-      //   algorithm: "HS256",
-      //   expiresIn: "3h"
-      // });
-      // res.jsonp({ access_token: token });
-      res.cookie('userId', docs._id, {maxAge: 300000})
+      const user = {
+        user_id: docs._id,
+        user_mail: docs.User_mail,
+        user_role: docs.User_role
+      };
+      let token = jwt.sign({ user: user }, "Team2DevelopmentCms", {
+        algorithm: "HS256",
+        expiresIn: "3h"
+      });
+      res.cookie("user", token, { maxAge: 300000, signed: true }); //set domain and httpOnly to cookie only send to a domain and https
       Models.RoleModel.findById({ _id: docs.User_role }).exec((err, role) => {
         if (role.roleName === "Staff") {
           return res.redirect("/staff");
@@ -43,8 +47,8 @@ function PostLogin(req, res) {
   });
 }
 function LogOut(req, res) {
-  res.clearCookie("userId");
-  res.redirect("/");
+  res.clearCookie("user");
+  return res.redirect("/login");
 }
 module.exports = {
   Home_Page: Home_Page,

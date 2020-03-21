@@ -11,51 +11,61 @@
                         <form class="form-horizontal">
                             <fieldset class="fieldset">
                                 <h3 class="fieldset-title">Information Of Account</h3>
-                                <%for(x in locals.user){%>
-                                <div class="form-group avatar">
-                                    <figure class="figure col-md-2 col-sm-3 col-xs-12">
-                                        <img class="img-rounded img-responsive img"
-                                            <%if(locals.user[x].User_avatar == ''){%>src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                                            <%}else{%>src="/static/Admin/image/<%=locals.user[x].User_avatar%>" <%}%> alt="">
-                                    </figure>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Full Name</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12">
-                                        <%=locals.user[x].User_full%> </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Address</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12">
-                                        <%=locals.user[x].User_address%>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Gender</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12">
-                                        <%=locals.user[x].User_gender%>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <fieldset class="fieldset">
-                                <div class="form-group">
-                                    <label class="col-md-2  col-sm-3 col-xs-12 control-label">Date</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12">
-                                        <%=locals.user[x].User_date%>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Email</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12">
-                                        <%=locals.user[x].User_mail%> </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12">
-                                        <%=locals.user[x].User_phone%>
-                                    </div>
-                                </div>
+                                <table>
+                                    <%for(x in locals.user){%>
+                                    <tr>
+                                        <th>
+                                            <div class="form-group avatar">
+                                                <figure class="figure col-md-2 col-sm-3 col-xs-12">
+                                                    <img class="img-rounded img-responsive img"
+                                                        <%if(locals.user[x].User_avatar == ''){%>src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                                        <%}else{%>src="/static/Admin/image/<%=locals.user[x].User_avatar%>" <%}%> alt="">
+                                                </figure>
+                                            </div>
+                                        </th>
+                                        <th>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Full Name</label>
+                                            <div class="col-md-10 col-sm-9 col-xs-12">
+                                                <%=locals.user[x].User_full%> </div>
+                                        </div>
+        
+                                        <div class="form-group">
+                                            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Address</label>
+                                            <div class="col-md-10 col-sm-9 col-xs-12">
+                                                <%=locals.user[x].User_address%>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Gender</label>
+                                            <div class="col-md-10 col-sm-9 col-xs-12">
+                                                <%=locals.user[x].User_gender%>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset class="fieldset">
+                                        <div class="form-group">
+                                            <label class="col-md-2  col-sm-3 col-xs-12 control-label">Date</label>
+                                            <div class="col-md-10 col-sm-9 col-xs-12">
+                                                <%=locals.user[x].User_date%>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Email</label>
+                                            <div class="col-md-10 col-sm-9 col-xs-12">
+                                                <%=locals.user[x].User_mail%> </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2  col-sm-3 col-xs-12 control-label">Phone</label>
+                                            <div class="col-md-10 col-sm-9 col-xs-12">
+                                                <%=locals.user[x].User_phone%>
+                                            </div>
+                                        </div>
+                                        </th>
+                                    </tr>
+                                    <%}%>
+                                </table>
                             </fieldset>
                             <hr>
                             <div class="form-group">
@@ -63,7 +73,7 @@
                                     <a class="btn btn-secondary" href="/staff">Cancel</a>
                                 </div>
                             </div>
-                            <%}%>
+                           
                         </form>
                     </div>
                 </div>

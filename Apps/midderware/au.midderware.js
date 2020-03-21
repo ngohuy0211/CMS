@@ -1,61 +1,42 @@
-const Models = require('../Models/Models')
-const mongoose = require('../../common/database')()
-const jwt = require('jsonwebtoken')
-async function checkAth(req, res, next)
-{
-    if(req.header && req.header.authorization && String(req.header.authorization.split(' ')[0]).toLowerCase() == 'bearer')
-    if(!req.cookies.userId)
-    {
-        res.redirect('/login')
-        return
+const Models = require("../Models/Models");
+const mongoose = require("../../common/database")();
+const jwt = require("jsonwebtoken");
+async function checkAth(req, res, next) {
+  let token = req.signedCookies.user;
+  if (!token) {
+    return res.redirect("/login");
+  }
+  let userId = jwt.verify(token, "Team2DevelopmentCms", (err, decode) => {
+    if (err) return res.status(400).send('Error') ;
+    global.user_ifo = decode.user;
+    Models.UserModel.find({ _id: decode.user.user_id }).exec((err, docs) => {
+      if (docs == null) {
+        return res.redirect("/login");
+      }
+      res.locals.user = docs;
+      return next();
+    });
+  });
+}
+function CheckStaff(req, res, next) {
+  Models.RoleModel.findById({ _id: user_ifo.user_role }).exec((err, role) => {
+    if (role.roleName === "Staff") {
+      return next();
     }
-  await Models.UserModel.find({_id: req.cookies.userId}).exec((err, docs)=>{
-    if(docs == null)
-        {
-            res.redirect('/login')
-            return
-        }
-        res.locals.user = docs
-       return next()
-    })
-
+    res.redirect("/login");
+  });
 }
-async function CheckStudent(req, res, next){
-    
-    let user = await Models.UserModel.findById({_id: req.cookies.userId})
-    Model.RoleModel.findById({_id: user.User_role}).exec((err, role)=>{
-        if(role.roleName === 'Student')
-        {
-            next()
-        }
-    })
-}
-async function CheckStaff(req, res, next){
-    if(!req.cookies.userId)
-    {
-        return res.redirect('/login')
+function CheckTutor(req, res, next) {
+  Model.RoleModels.findById({ _id: user_ifo.user_role }).exec((err, role) => {
+    if (role.roleName === "Tutor") {
+        res.locals.role = role.roleName
+        next();
     }
-    let user = await Models.UserModel.findById({_id: req.cookies.userId})
-    Models.RoleModel.findById({_id: user.User_role}).exec((err, role)=>{
-        if(role.roleName === 'Staff')
-        {
-            return next()
-        }
-        res.redirect('/login')
-    })
-}
-async function checkTutor (req, res, next){
-    
-    let user = await Models.UserModel.findById({_id: req.cookies.userId})
-    Model.RoleModels.findById({_id: user.User_role}).exec((err, role)=>{
-        if(role.roleName === 'Tutor')
-        {
-            next()
-        }
-        res.redirect('/login')
-    })
+    res.redirect("/login");
+  });
 }
 module.exports = {
-    reqAuth: checkAth,
-    CheckRole: CheckStaff,
-}
+  reqAuth: checkAth,
+  CheckStaff: CheckStaff,
+  CheckTutor: CheckTutor
+};
