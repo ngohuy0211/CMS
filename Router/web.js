@@ -26,4 +26,6 @@ router.get('/subject', StaffController.Subject_Page)
 router.get('/', HomeController.Home_Page)
 router.get('/student',auth.reqAuth ,StudentAndTutorController.Class_Page)
 router.get('/student/detail',auth.reqAuth ,StudentAndTutorController.Profile_Page)
+router.get('/ForgotPassword', HomeController.Get_Forgot_Password)
+router.post('/ForgotPassword', HomeController.Post_Forgot_Password)
 module.exports = router

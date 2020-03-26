@@ -1,6 +1,7 @@
 const Models = require("../Models/Models");
 const mongoose = require("../../common/database")();
 const jwt = require("jsonwebtoken");
+const nodemailer = require('nodemailer')
 
 function Home_Page(req, res) {
   res.render("HomePage/index");
@@ -50,9 +51,45 @@ function LogOut(req, res) {
   res.clearCookie("user");
   return res.redirect("/login");
 }
+function Get_Forgot_Password(req, res)
+{
+  return res.render('HomePage/Forgotpass', {data:{}})
+}
+function Post_Forgot_Password(req, res)
+{
+  let mail = req.body.email
+  Models.UserModel.findOne({User_mail:mail}).exec((err, user)=>{
+    if(err) {
+      let error = "Email does not exist"
+      return res.render('HomePage/Forgotpass', {data:{error:error}})
+    }
+    else{
+      let transporter = nodemailer.createTransport({
+        service: "Gmail",
+  auth: {
+    user: 'hoangpn2201@gmail.com',
+    pass: 'Hoang123@'
+  }
+    })
+    let mailOptions = {
+        from: "Admin",
+        to: user.User_mail,
+        subject: "Your password of University",
+        text: ("Your Password of email : " + user.User_mail + " is : " + user.User_pass),
+    }
+    transporter.sendMail(mailOptions, (err, info)=>{
+        if(err) return console.log(err)
+        console.log('Message sent: ' + info)
+        return res.redirect('/login')
+    })
+    }
+  })
+}
 module.exports = {
   Home_Page: Home_Page,
   GetLogin: GetLogin,
   PostLogin: PostLogin,
-  LogOut: LogOut
+  LogOut: LogOut,
+  Get_Forgot_Password: Get_Forgot_Password,
+  Post_Forgot_Password: Post_Forgot_Password
 };

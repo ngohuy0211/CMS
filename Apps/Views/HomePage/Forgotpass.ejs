@@ -7,11 +7,11 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="run-customer">
-                        <%if(data && data.error){%>
+                        <%if(data.error){%>
                             <div class="alert alert-danger"><%=data.error%></div>
                         <%}%>
                         <h5>
-                            Login
+                            Forgot password
                         </h5>
                         <form method="POST">
                             <div class="form-row">
@@ -23,23 +23,9 @@
                                 </label>
                                 <input type="email" class="input namefild" name="email" required>
                             </div>
-                            <div class="form-row">
-                                <label class="lebel-abs">
-                                    Password 
-                                    <strong class="red">
-                                    *
-                                    </strong>
-                                </label>
-                                <input type="password" class="input namefild" name="password" required>
-                            </div>
-                            <p class="forgoten">
-                                <a href="/ForgotPassword">
-                                    Forgot your password?
-                                </a>
-                            </p>
-                            <input type="submit" value="Login" style="width: 90px; height: 35px; border-radius: 10px;">
-                        </form>
-
+                            <input type="submit" value="Find" style="width: 90px; height: 35px; border-radius: 10px;">
+                        </form><br>
+                        <button class="btn btn-primary"><a href="/"></a>Back</button>
                     </div>
                 </div>
             </div>
