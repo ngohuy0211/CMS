@@ -26,9 +26,9 @@ const FacultySchema = new Schema({
 })
 const SubjectSchema = new Schema({
     _id: {type: mongoose.Schema.ObjectId, auto: true},
-    Subject_ID: String,
+    Subject_ID: {type: String, unique: true},
     Subject_name: {type: String, unique: true},
-    Subject_detail: String,
+    Subject_des: String,
     Create_at: {type: Date, default: Date.now},
     Update_at: {type: Date, default: Date.now},
     Faculty_id: {type: mongoose.Schema.ObjectId, ref: 'Faculty'}
