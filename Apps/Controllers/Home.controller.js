@@ -31,13 +31,13 @@ async function PostLogin(req, res) {
         algorithm: "HS256",
         expiresIn: "3h"
       });
-      res.cookie("user", token, { maxAge: 300000, signed: true }); //set domain and httpOnly to cookie only send to a domain and https
+      res.cookie("user", token, { maxAge: 10800000, signed: true }); //set domain and httpOnly to cookie only send to a domain and https
       Models.RoleModel.findById({ _id: docs.User_role }).exec((err, role) => {
         if (role.roleName === "Staff") {
           return res.redirect("/staff");
         }
         if (role.roleName === "Student") {
-          return res.redirect("/");
+          return res.redirect("/student");
         }
         if (role.roleName === "Tutor") {
           return res.redirect("/");

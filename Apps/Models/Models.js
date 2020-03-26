@@ -62,6 +62,11 @@ const CommentSchema = new Schema({
     Date_time: Date,
     Comment_detail: String
 })
+const SubjectDetailSchema = new Schema({
+    _id: {type: mongoose.Schema.ObjectId, auto: true},
+    Subject_id: {type: mongoose.Schema.ObjectId, ref:'Subject'},
+    Class_id: {type: mongoose.Schema.ObjectId, ref:'Class'}
+})
 const Role = mongoose.model('Role', RoleSchema, 'Role')
 const User = mongoose.model('User', UserSchema, 'User')
 const Faculty = mongoose.model('Faculty', FacultySchema, 'Faculty')

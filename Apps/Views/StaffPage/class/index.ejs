@@ -23,6 +23,8 @@
                 <th>Class Name</th>
                 <th>Created_at</th>
                 <th>Updated at</th>
+                <th></th>
+                <th></th>
             </tr>
             <tr>
                 <%for(x in data.class){%>
@@ -42,16 +44,14 @@
                     <a href="#" title="ViewExercise">
                         <i class="fa fa-eye"> View Exercise</i>
                     </a>
-                </td>
-                <td>
                     <a href="#" title="Detail">
-                        <i class="fa fa-eye"></i>
+                        <i class="fa fa-eye">Detail</i>
                     </a> &nbsp;
                     <a href="#" title="Update">
-                        <i class="fa fa-pencil"></i>
+                        <i class="fa fa-pencil">Update</i>
                     </a> &nbsp;
                     <a href="#" title="Delete" onclick="return confirm('Are you sure delete?')">
-                        <i class="fa fa-trash"></i>
+                        <i class="fa fa-trash">Delete</i>
                     </a>
                 </td>
                 <%}%>

@@ -7,7 +7,7 @@ async function checkAth(req, res, next) {
     return res.redirect("/login");
   }
   let userId = jwt.verify(token, "Team2DevelopmentCms", (err, decode) => {
-    if (err) return res.status(400).send('Error') ;
+    if (err) return res.status(400).send("Error");
     global.user_ifo = decode.user;
     Models.UserModel.find({ _id: decode.user.user_id }).exec((err, docs) => {
       if (docs == null) {
@@ -23,16 +23,16 @@ function CheckStaff(req, res, next) {
     if (role.roleName === "Staff") {
       return next();
     }
-    res.redirect("/login");
+    return res.redirect("/login");
   });
 }
 function CheckTutor(req, res, next) {
   Model.RoleModels.findById({ _id: user_ifo.user_role }).exec((err, role) => {
     if (role.roleName === "Tutor") {
-        res.locals.role = role.roleName
-        next();
+      res.locals.role = role.roleName;
+      return next();
     }
-    res.redirect("/login");
+     return res.redirect("/login");
   });
 }
 module.exports = {

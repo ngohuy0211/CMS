@@ -1,0 +1,62 @@
+<%-include ('../layouts/header.ejs');-%>
+
+<div class="col-md-10 col-sm-9 col-xs-12">
+    <!-- Main content -->
+    <main class="main-container container">
+        <div class="view-account">
+            <section class="module">
+                <div class="module-inner">
+                    <div class="content-panel">
+                        <form class="form-horizontal" style="font-size:15px;" method="POST">
+                            <fieldset class="fieldset">
+                                <br>
+                                <h3 class="fieldset-title">Your Profile</h3>
+                                <br> <br>
+                                <%for(x in locals.user){%>
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Your Full Name:</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">
+                                        <%=locals.user[x].User_full%></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Exercise ID:</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">aaaaa</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Exercise Name:</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">aaaaaa</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Create at:</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">aaa</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Deadline:</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">aaa</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Description:</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">aaaaaa</div>
+                                </div>
+                                <%}%>
+                            </fieldset>
+                            <hr>
+                            <div class="form-group">
+                                <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                    <a class="btn btn-secondary" href="#">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<%-include ('../layouts/footer.ejs');-%>
