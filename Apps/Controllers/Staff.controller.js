@@ -30,9 +30,19 @@ function Staff_Profile(req, res) {
 function Get_Create_Faculty(req, res){
   res.render("StaffPage/Faculty/CreateFaculty");
 }
-function Post_Create_Faculty(req, res)
+async function Post_Create_Faculty(req, res)
 {
-  
+  let faculty_name = req.body.faculty_name
+  let faculty_des = req.body.faculty_des
+  let New_Faculty = await new Models.FacultyModel({
+    Faculty_Name :faculty_name,
+    Faculty_des: faculty_des
+  })
+  New_Faculty.save((err)=>{
+    if(err) return console.log(err)
+    return res.redirect('/Faculty')
+  })
+
 }
 function Get_Update_Faculty(req, res)
 {
@@ -81,6 +91,7 @@ module.exports = {
   Faculty_Page: Faculty_Page,
   Staff_Profile: Staff_Profile,
   Get_Create_Faculty:Get_Create_Faculty,
+  Post_Create_Faculty:Post_Create_Faculty,
   Get_Update_Faculty:Get_Update_Faculty,
   Delete_Faculty: Delete_Faculty,
   Get_Create_Subject: Get_Create_Subject,

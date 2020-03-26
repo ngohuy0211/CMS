@@ -1,10 +1,14 @@
 const mongoose = require("mongoose");
 module.exports = () => {
+  const MONGODB_RUI ='mongodb+srv://hoangpn:hoangpn123@team2-ojrxy.mongodb.net/Cms_database?retryWrites=true&w=majority'
   mongoose.set("useCreateIndex", true);
-  mongoose.connect("mongodb://localhost:27017/Cms_database" || process.env.DATABASE_URL, {
+  mongoose.connect(MONGODB_RUI, {
     useUnifiedTopology: true,
     useNewUrlParser: true
   });
+  // mongoose.connection.on('connected', ()=>{
+  //   console.log('ok')
+  // })
 
   return mongoose;
 };
