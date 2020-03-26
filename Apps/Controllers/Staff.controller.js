@@ -50,6 +50,30 @@ function Delete_Faculty(req, res)
     return res.redirect('/Faculty')
   })
 }
+function Get_Create_Subject(req, res)
+{
+  return res.render("StaffPage/Subject/createSubject")
+}
+function Post_Create_Subject(req, res)
+{
+
+}
+function Get_Update_Subject(req, res)
+{
+  let subject_id = req.params.subject_id
+  Models.SubjectModel.findById({_id: subject_id}).exec((err, subject)=>{
+    if(err) console.log(err)
+    return res.render("StaffPage/Subject/updateSubject", {data:{subject:subject}})
+  })
+}
+function Get_Delete_Subject(req, res)
+{
+  let subject_id = req.params.subject_id
+  Models.SubjectModel.findByIdAndDelete({_id: subject_id}).exec((err)=>{
+    if(err) console.log(err)
+    return res.redirect('/Faculty/Subject/:faculty_id')
+  })
+}
 module.exports = {
   Page_Index: Page_Index,
   Subject_Page: Subject_Page,
@@ -58,5 +82,7 @@ module.exports = {
   Staff_Profile: Staff_Profile,
   Get_Create_Faculty:Get_Create_Faculty,
   Get_Update_Faculty:Get_Update_Faculty,
-  Delete_Faculty: Delete_Faculty
+  Delete_Faculty: Delete_Faculty,
+  Get_Create_Subject: Get_Create_Subject,
+  Get_Update_Subject: Get_Update_Subject
 };
