@@ -1,7 +1,6 @@
 const Models = require("../Models/Models");
 const mongoose = require("../../common/database")();
 const path = require("path");
-
 async function Page_Index(req, res) {
   return res.render("StaffPage/index");
 }
@@ -17,7 +16,7 @@ function Staff_Profile(req, res) {
   return res.render("StaffPage/profile/profile");
 }
 function Get_Create_Faculty(req, res) {
-  res.render("StaffPage/Faculty/CreateFaculty");
+  return res.render("StaffPage/Faculty/CreateFaculty");
 }
 async function Post_Create_Faculty(req, res) {
   let faculty_name = req.body.faculty_name;
@@ -41,6 +40,15 @@ function Get_Update_Faculty(req, res) {
     });
   });
 }
+function Post_Upload_Faculty(req, res){
+  let faculty_name = req.body.faculty_name
+  let faculty_des = req.body.faculty_des
+  let faculty_id = req.params.faculty_id
+  Models.FacultyModel.findByIdAndUpdate(faculty_id, {Faculty_name:faculty_name, Faculty_des:faculty_des}).exec((err)=>{
+    if(err) return console.log(err)
+    return res.redirect('/staff/Faculty')
+  })
+}
 function Delete_Faculty(req, res) {
   let faculty_id = req.params.faculty_id;
   Models.FacultyModel.findByIdAndDelete({ _id: faculty_id }).exec(err => {
@@ -59,28 +67,30 @@ async function Class_Page(req, res) {
   return res.render("StaffPage/class/index", { data: { class: Class } });
 }
 function Get_Create_Subject(req, res) {
-  return res.render("StaffPage/Subject/createSubject", {data:{}});
+  let faculty_id = req.params.faculty_id
+  return res.render("StaffPage/Subject/createSubject", {data:{faculty:faculty_id}});
 }
 async function Post_Create_Subject(req, res) {
   let subject_id = req.body.subject_id
   let subject_name = req.body.subject_name
   let subject_des = req.body.subject_des
+  let faculty_id = req.body.faculty_id
   let New_Subject = await new Models.SubjectModel({
     Subject_ID: subject_id,
     Subject_name: subject_name,
     Subject_des: subject_des,
     Create_at_: '',
     Update_at: '',
-    Faculty_id: req.params.faculty_id
+    Faculty_id: faculty_id
   })
   New_Subject.save((err)=>{
     if(err){
-      console.log(err)
       let error = " Subject already exist"
       return res.render('StaffPage/Subject/createSubject', {data:{err: error}})
     }
-    return res.redirect('/Faculty/Subject/:' + req.params.faculty_id)
+    return res.redirect('/staff/Faculty/Subject/:' + req.params.faculty_id)
   })
+
 }
 function Get_Update_Subject(req, res) {
   let subject_id = req.params.subject_id;
@@ -107,6 +117,7 @@ module.exports = {
   Get_Create_Faculty: Get_Create_Faculty,
   Post_Create_Faculty: Post_Create_Faculty,
   Get_Update_Faculty: Get_Update_Faculty,
+  Post_Upload_Faculty: Post_Upload_Faculty,
   Delete_Faculty: Delete_Faculty,
   Get_Create_Subject: Get_Create_Subject,
   Post_Create_Subject:Post_Create_Subject,

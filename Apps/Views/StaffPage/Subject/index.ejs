@@ -11,7 +11,7 @@
 <!-- Main content -->
 <section class="content">
     <h1>Subjects</h1>
-    <a href="/Faculty/Subject/<%=data.faculty%>/Create" class="btn btn-primary">
+    <a href="/staff/Faculty/Subject/<%=data.faculty%>/Create" class="btn btn-primary">
        <i class="fa fa-plus"></i> Create New Subject
     </a>
     <br />
@@ -20,7 +20,7 @@
             <tr>
                 <th>Subject ID</th>
                 <th>Subject Name</th>
-                <th>Subject Detail</th>
+                <th>Subject Description</th>
                 <th>Create at</th>
                 <th>Update at</th>
                 <th></th>
@@ -34,7 +34,7 @@
                     <%=data.subject[x].Subject_name%>
                 </td>
                 <td>
-                    <%=data.subject[x].Subject_detail%>
+                    <%=data.subject[x].Subject_des%>
                 </td>
                 <td>
                     <%=data.subject[x].Create_at%>

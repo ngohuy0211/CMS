@@ -4,7 +4,8 @@ module.exports = () => {
   mongoose.set("useCreateIndex", true);
   mongoose.connect(MONGODB_RUI, {
     useUnifiedTopology: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useFindAndModify:false
   });
   // mongoose.connection.on('connected', ()=>{
   //   console.log('ok')
