@@ -8,7 +8,8 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.0/css/adminlte.min.css">
@@ -16,7 +17,8 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@2.4.18/dist/css/skins/_all-skins.min.css">
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.12/js"></script>
     <style>
         #dropd {
@@ -33,17 +35,18 @@
         #dropd li:hover {
             background-color: #1c1c1c;
         }
+
         .img {
             display: block;
-            max-width:100%;
-            max-height:100%;
+            max-width: 100%;
+            max-height: 100%;
             width: auto;
             height: auto;
-          }
-          ul{
-            list-style-type: none;
-          }
+        }
 
+        ul {
+            list-style-type: none;
+        }
     </style>
 </head>
 
@@ -76,26 +79,22 @@
                             <ul class="dropdown-menu">
                                 <!-- User avatar -->
                                 <li class="user-header">
-                                    <img <%if(locals.user[x].User_avatar == ''){%>src="static/Admin/image/user2-160x160.jpg"
-                                        <%} else{%>src="static/Admin/image/<%=locals.user[x].User_avatar%>" <%}%>  class="user-image" alt="User Image">
-    
-                                <p>
-                                    <small>Chức vụ</small>
-                                            STAFF
-                                </p>
-                            </li>
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="/staff/profile/"
-                                        class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                    <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-                </li>
-                </ul>
-                <%}%>
+                                    <p style="font-size: 200%;">
+                                        <big>ROLE</big><br>
+                                        STAFF
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="float-left">
+                                        <a href="/staff/profile/" class="btn btn-info">Profile</a>
+                                    </div>
+                                    <div class="float-right">
+                                        <a href="/logout" class="btn btn-dark">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <%}%>
                     </li>
                 </ul>
             </div>

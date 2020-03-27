@@ -21,7 +21,7 @@
                             <%if(data.err){%>
                             <div class="col-md-3 col-sm-3 col-xs-12 alert alert-danger"><%=data.err%></div>
                             <%}%>
-                            <input type="hidden" value="<%=data.faculty%>" name="faculty_id">
+                            <input type="hidden" name="faculty_id" value="<%=data.faculty%>">
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Subject ID</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
@@ -47,7 +47,7 @@
                         <div class="form-group">
                             <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
                                 <input class="btn btn-primary" type="submit" value="Create">
-                                <a class="btn btn-secondary" href="/Faculty">Cancel</a>
+                                <a class="btn btn-secondary" href="/staff/Faculty/<%=data.faculty%>/Subject">Cancel</a>
                             </div>
                         </div>
                     </form>

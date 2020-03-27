@@ -1,6 +1,7 @@
 const Models = require("../Models/Models");
 const mongoose = require("../../common/database")();
 const path = require("path");
+const ObjectId = require('mongoose').Types.ObjectId
 async function Page_Index(req, res) {
   return res.render("StaffPage/index");
 }
@@ -28,7 +29,7 @@ async function Post_Create_Faculty(req, res) {
   });
   New_Faculty.save(err => {
     if (err) return console.log(err);
-    return res.redirect("/Faculty");
+    return res.redirect("/staff/Faculty");
   });
 }
 function Get_Update_Faculty(req, res) {
@@ -53,7 +54,7 @@ function Delete_Faculty(req, res) {
   let faculty_id = req.params.faculty_id;
   Models.FacultyModel.findByIdAndDelete({ _id: faculty_id }).exec(err => {
     if (err) return console.log(err);
-    return res.redirect("/Faculty");
+    return res.redirect("/staff/Faculty");
   });
 }
 async function Subject_Page(req, res) {
@@ -74,22 +75,23 @@ async function Post_Create_Subject(req, res) {
   let subject_id = req.body.subject_id
   let subject_name = req.body.subject_name
   let subject_des = req.body.subject_des
-  let faculty_id = req.body.faculty_id
+  let Create_at = new Date()
+  let date = Create_at.getFullYear()+'-'+(Create_at.getMonth()+1)+'-'+Create_at.getDate()+'/'+Create_at.getHours() + ":" + Create_at.getMinutes() + ":" + Create_at.getSeconds();
   let New_Subject = await new Models.SubjectModel({
-    Subject_ID: subject_id,
-    Subject_name: subject_name,
-    Subject_des: subject_des,
-    Create_at_: '',
-    Update_at: '',
-    Faculty_id: faculty_id
-  })
-  New_Subject.save((err)=>{
-    if(err){
-      let error = " Subject already exist"
-      return res.render('StaffPage/Subject/createSubject', {data:{err: error}})
-    }
-    return res.redirect('/staff/Faculty/Subject/:' + req.params.faculty_id)
-  })
+        Subject_ID: subject_id,
+        Subject_name: subject_name,
+        Subject_des: subject_des,
+        Create_at: date,
+        Update_at: '',
+        Faculty_id: req.body.faculty_id,
+      })
+      New_Subject.save((err)=>{
+          if(err){
+            let error = " Subject already exist"
+            return res.render('StaffPage/Subject/createSubject', {data:{err: error}})
+          }
+          return res.redirect('/staff/Faculty/'+ req.body.faculty_id+'/Subject')
+        })
 
 }
 function Get_Update_Subject(req, res) {
@@ -103,23 +105,25 @@ function Get_Update_Subject(req, res) {
 }
 function Get_Delete_Subject(req, res) {
   let subject_id = req.params.subject_id;
+  let faculty_id = req.params.faculty_id
   Models.SubjectModel.findByIdAndDelete({ _id: subject_id }).exec(err => {
     if (err) console.log(err);
-    return res.redirect("/Faculty/Subject/:faculty_id");
+    return res.redirect("/staff/Faculty/"+faculty_id+"/Subject");
   });
 }
 module.exports = {
   Page_Index: Page_Index,
-  Subject_Page: Subject_Page,
-  Class_Page: Class_Page,
-  Faculty_Page: Faculty_Page,
   Staff_Profile: Staff_Profile,
+  Faculty_Page: Faculty_Page,
   Get_Create_Faculty: Get_Create_Faculty,
   Post_Create_Faculty: Post_Create_Faculty,
   Get_Update_Faculty: Get_Update_Faculty,
   Post_Upload_Faculty: Post_Upload_Faculty,
   Delete_Faculty: Delete_Faculty,
+  Subject_Page: Subject_Page,
   Get_Create_Subject: Get_Create_Subject,
   Post_Create_Subject:Post_Create_Subject,
   Get_Update_Subject: Get_Update_Subject,
+  Get_Delete_Subject:Get_Delete_Subject,
+  Class_Page: Class_Page,
 };
