@@ -4,53 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>University of Greenwich Viet Nam</title>
-    <link href="static/User/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/User/css/bootstrap.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,100italic,100' rel='stylesheet' type='text/css'>
-    <link href="static/User/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/User/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="static/theme/user/css/flexslider.css" type="text/css" media="screen"/>
-    <link href="static/User/css/sequence-looptheme.css" rel="stylesheet" media="all"/>
-    <link href="static/User/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="static/User/css/slider.css">
+    <link href="/static/User/css/sequence-looptheme.css" rel="stylesheet" media="all"/>
+    <link href="/static/User/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/User/css/slider.css">
+    <style>
+        /* Header */
+        .header {
+            position: relative;
+            background-color: white;
+        }
+        .logo {
+            float: left;
+            position: relative;
+            padding: 20px;
+        }
+        .header-top {
+            float: left;
+            width: 100%;
+            position: relative;
+        }
+        .header-top ul li {
+            list-style: none;
+            margin-top: 2px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 1px ;
+            color: red;
+        }
+        .header-bottom {
+            float: left;
+            width: 100%;
+            position: relative;
+        }
+        .icon-bar {
+            background: #cccccc;
+        }
+        .color {
+            background-color: #cccccc;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .img-circle{border-radius:50%}
+        /* End Header */
+        /* Footer */
+        .footer {
+            width: 100%;
+            background-color: #2b3494;
+        }
+        .footer-info{
+            position: relative;
+            padding: 20px;
+            color: white;
+        }
+        strong {
+            color: white;
+        }
+        .footer1 {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        /* End footer */
+    </style>
 </head>
 <body>
 <div class="header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-sm-4">
-                <div class="logo"><a href="/"><img src="static/User/images/logo.png" style="max-width: 100%; height: 90px;"></a></div>
+    <div style="background-color: #2b3494; width: 100%; height: 25px;">
+        <div class="header-top">
+            <div class="col-md-4">
+                <ul>
+                    <li>
+                        <i class="fa fa-key"></i>
+                        <a href="/login"><span style="color: blue; border-radius: 3px; background-color: white; padding-right: 5px; padding-left: 5px;">Login</span></a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-md-8 col-sm-8">
-                <div class="header_top" style="margin-top: 15px">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <ul class="usermenu">
-                                <li><a href="/login" class="log">Login</a></li>
-                                <li><a href="register.html" class="reg">Register</a></li>
-                            </ul>
-                        </div>
-                    </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-4 col-sm-4">
+            <div class="logo">
+                <a href="home.html">
+                    <img src="/static/User/images/logo.png" style="max-width: 100%; height: 90px;">
+                </a>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-8">
+            <div class="clearfix"></div>
+            <div class="header-bottom" style="margin-top: 40px;">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="float: left; border: 1px solid blue">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
-                <div class="clearfix"></div>
-                <div class="header_bottom">
-                    <ul class="option">
-                        <li id="search" class="search">
-                            <form>
-                                <input class="search-submit" type="submit" value="">
-                                <input class="search-input" placeholder="Enter your search term..." type="text" value="" name="search">
-                            </form>
-                        </li>
+                <div class="">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/" class="btn btn-primary">Home</a></li>
+                        <li><a href="login.html" onclick="alert('Please login to use this function!')" class="btn btn-primary">Admin</a></li>
+                        <li><a href="login.html" onclick="alert('Please login to use this function!')" class="btn btn-primary">Trainer</a></li>
+                        <li><a href="login.html" onclick="alert('Please login to use this function!')" class="btn btn-primary">Trainee</a></li>
                     </ul>
-                    <div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/login" onclick="alert('Bạn phải đăng nhập để sử dụng chức năng này!')">Admin</a></li>
-                            <li><a href="/login" onclick="alert('Bạn phải đăng nhập để sử dụng chức năng này!')">Trainer</a></li>
-                            <li><a href="/login" onclick="alert('Bạn phải đăng nhập để sử dụng chức năng này!')">Trainee</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="clearfix"></div>
+<div style="background-color: #2b3494; width: 100%; height: 25px;">
+    .
 </div>
