@@ -21,10 +21,6 @@
                 <th>User ID</th>
                 <th>User Full</th>
                 <th>User Mail</th>
-                <th>User Address</th>
-                <th>User Gender</th>
-                <th>User Phone</th>
-                <th>Day of Birth</th>
                 <th>Create at</th>
                 <th>Update at</th>
                 <th></th>
@@ -41,25 +37,13 @@
                     <%=data.account[x].User_mail%>
                 </td>
                 <td>
-                    <%=data.account[x].User_address%>
-                </td>
-                <td>
-                    <%=data.account[x].User_gender%>
-                </td>
-                <td>
-                    <%=data.account[x].User_phone%>
-                </td>
-                <td>
-                    <%=data.account[x].User_date%>
-                </td>
-                <td>
                     <%=data.account[x].Create_at%>
                 </td>
                 <td>
                     <%=data.account[x].Update_at%>
                 </td>
                 <td>
-                    <a href="/staff/Account/<%=data.role%>/Detail" title="Detail">
+                    <a href="/staff/Account/<%=data.role%>/Detail/<%=data.account[x]._id%>" title="Detail">
                         <i class="fa fa-eye">Detail</i>
                     </a> &nbsp;
                     <a href="/staff/Account/<%=data.role%>/Update" title="Update">
