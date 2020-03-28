@@ -48,7 +48,28 @@
             font-weight: bold;
             font-size: 14px;
         }
-        .img-circle{border-radius:50%}
+        .img-circle {
+            border-radius:50%
+        }
+        .navheader ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .navheader ul li {
+            float: left;
+        }
+        .navheader ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 8px 12px;
+            margin-top: 10px;
+            margin-left: 5px;
+            text-decoration: none;
+            border-radius: 10px;
+        }
         /* End Header */
         /* Footer */
         .footer {
@@ -62,12 +83,6 @@
         }
         strong {
             color: white;
-        }
-        .footer1 {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
         }
         /* End footer */
     </style>
@@ -105,8 +120,8 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="">
-                    <ul class="nav navbar-nav">
+                <div class="navheader">
+                    <ul>
                         <li><a href="/" class="btn btn-primary">Home</a></li>
                         <li><a href="login.html" onclick="alert('Please login to use this function!')" class="btn btn-primary">Admin</a></li>
                         <li><a href="login.html" onclick="alert('Please login to use this function!')" class="btn btn-primary">Trainer</a></li>
