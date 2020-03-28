@@ -1,12 +1,11 @@
-<%include staff/layouts/header%>
+<%-include ('../layouts/header.ejs')-%>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Manage Class
-            <small>Control panel</small>
+            Class Management
         </h1>
     </section>
 
@@ -16,21 +15,20 @@
         <section class="module">
             <div class="module-inner">
                 <div class="content-panel">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="POST">
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Update Class</h3>
-
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Class ID</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="1640">
+                                    <input type="text" class="form-control" value="<%=data.class.Class_ID%>" name="class_id">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Class Name</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="IT">
+                                    <input type="text" class="form-control" value="<%=data.class.Class_name%>" name="class_name">
                                 </div>
                             </div>
 
@@ -39,7 +37,7 @@
                         <div class="form-group">
                             <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
                                 <input class="btn btn-primary" type="submit" value="Update Information">
-                                <a class="btn btn-secondary" href="#">Cancel</a>
+                                <a class="btn btn-secondary" href="/staff/Faculty/Subject/<%=data.subject%>/Class/">Cancel</a>
                             </div>
                         </div>
                     </form>
@@ -52,4 +50,4 @@
 </div>
 <!-- /.content-wrapper -->
 
-<%include staff/layouts/footer%>
+<%-include ('../layouts/footer')-%>

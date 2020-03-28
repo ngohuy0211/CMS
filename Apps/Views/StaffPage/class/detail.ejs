@@ -1,4 +1,4 @@
-<%include staff/layouts/header%>
+<%-include ('../layouts/header.ejs')-%>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -10,96 +10,103 @@
         </h1>
     </section>
 
-<!-- Main content -->
-<div class="col-md-10">
     <!-- Main content -->
-    <main class="main-container container">
-        <div class="view-account">
-            <section class="module">
-                <div class="module-inner">
-                    <div class="content-panel">
-                        <form class="form-horizontal" style="font-size:15px;">
-                            <fieldset class="fieldset">
-                                <br> <br>
-                                <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Class ID:</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">
-                                        GCH0704
+    <div class="col-md-10">
+        <!-- Main content -->
+        <main class="main-container container">
+            <div class="view-account">
+                <section class="module">
+                    <div class="module-inner">
+                        <div class="content-panel">
+                            <form class="form-horizontal" style="font-size:15px;">
+                                <fieldset class="fieldset">
+                                    <br> <br>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">Class ID:</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">
+                                            <%=data.Class.Class_ID%>
+                                        </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">Class Name:</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">
+                                            <%=data.Class.Class_name%>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">Subject ID:</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">
+                                            <%=data.Subject.Subject_ID%>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">Subject Name:</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">
+                                            <%=data.Subject.Subject_name%>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-sm-3 col-xs-12 control-label">Tutor:</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">
+                                            <%=data.Subject.Subject_name%>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="clearfix"></div>
+                                <h3>List of Student in Class</h3>
+                                <a href="#" class="btn btn-primary">
+                                    <i class="fa fa-plus"></i> Add Student
+                                </a>
+                                <br />
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover">
+                                        <tr>
+                                            <th>Student ID (User ID)</th>
+                                            <th>Student Name</th>
+                                            <th>Created_at</th>
+                                            <th>Updated at</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                GCH175251
+                                            </td>
+                                            <td>
+                                                Ngo Quang Huy
+                                            </td>
+                                            <td>
+                                                03:02:52
+                                            </td>
+                                            <td>
+                                                00:00:00
+                                            </td>
+                                            <td>
+                                                <a href="#" title="Delete"
+                                                    onclick="return confirm('Are you sure delete?')">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
 
+                                <div class="clearfix"></div>
+                                <hr class="col-md-12">
                                 <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Class Name:</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">
-                                        1640
+                                    <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                        <a class="btn btn-secondary" href="#" style="margin-left: 110px;">Cancel</a>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Subject ID:</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">
-                                        1640
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Subject Name:</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">
-                                        Website
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <div class="clearfix"></div>
-                            <h3>List of Student in Class</h3>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fa fa-plus"></i> Add Student
-                            </a>
-                            <br />
-                            <div class="table-responsive">
-                                <table class="table table-striped table-hover">
-                                    <tr>
-                                        <th>Student ID (User ID)</th>
-                                        <th>Student Name</th>
-                                        <th>Created_at</th>
-                                        <th>Updated at</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            GCH175251
-                                        </td>
-                                        <td>
-                                            Ngo Quang Huy
-                                        </td>
-                                        <td>
-                                            03:02:52
-                                        </td>
-                                        <td>
-                                            00:00:00
-                                        </td>
-                                        <td>
-                                            <a href="#" title="Delete" onclick="return confirm('Are you sure delete?')">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                            <div class="clearfix"></div>
-                            <hr class="col-md-12">
-                            <div class="form-group">
-                                <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                                    <a class="btn btn-secondary" href="#" style="margin-left: 110px;">Cancel</a>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </section>
-        </div>
-    </main>
-</div>
-<!-- /.content -->
+                </section>
+            </div>
+        </main>
+    </div>
+    <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 
-<%include staff/layouts/footer%>
+<%-include ('../layouts/footer.ejs')-%>

@@ -17,6 +17,7 @@ const UserSchema = new Schema({
     User_phone: String,
     User_avatar: String,
     User_birth: Date,
+    Create_at: Date,
     Update_at: Date
 })
 const FacultySchema = new Schema({
@@ -51,7 +52,8 @@ const ClassDetailSchema = new Schema({
 const ExerciseSchema = new Schema({
     _id: {type: mongoose.Schema.ObjectId, auto: true},
     Class_id : {type:mongoose.Schema.ObjectId, ref: 'Class'},
-    Exercise_detail: String,
+    File_Exercise: String,
+    Exercise_des: String,
     Create_at: Date,
     Deadline: Date
 })
