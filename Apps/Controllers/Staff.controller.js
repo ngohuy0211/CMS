@@ -1,8 +1,8 @@
 const Models = require("../Models/Models");
 const mongoose = require("../../common/database")();
 const path = require("path");
-const formidable = require('formidable')
-const mv = require('mv')
+const formidable = require("formidable");
+const mv = require("mv");
 async function Page_Index(req, res) {
   return res.render("StaffPage/index");
 }
@@ -247,12 +247,68 @@ function List_Account(req, res) {
     });
   });
 }
-function Get_Create_Account(req, res)
-{
-  let role = req.params.role_id
-  return res.render('StaffPage/account/create', {data:{role: role}})
+function Get_Create_Account(req, res) {
+  let role = req.params.role_id;
+  return res.render("StaffPage/account/create", { data: { role: role } });
 }
-function Post_Create_Account(req, res)
+function Post_Create_Account(req, res) {
+  let DateTime = new Date();
+  let date =
+    DateTime.getFullYear() +
+    "-" +
+    (DateTime.getMonth() + 1) +
+    "-" +
+    DateTime.getDate() +
+    "/" +
+    DateTime.getHours() +
+    ":" +
+    DateTime.getMinutes() +
+    ":" +
+    DateTime.getSeconds();
+  let form = new formidable.IncomingForm();
+  form.parse(req, (err, fields, files) => {
+    let oldUrl = files.User_avatar.path;
+    let newUrl = path.join(
+      __dirname,
+      "../../Public/images",
+      files.User_avatar.name
+    );
+    mv(oldUrl, newUrl, err => {
+      if (err) throw err;
+      fields.User_avatar = files.User_avatar.name;
+      fields.Create_at = date;
+      fields.Update_at = "";
+      let New_Account = new Models.UserModel(fields, { versionKey: false });
+      New_Account.save(err => {
+        if (err) {
+          let error = "Email already exist";
+          return res.render("StaffPage/account/create", {
+            data: { error: error }
+          });
+        }
+        return res.redirect("/staff/Account/" + req.params.role_id);
+      });
+    });
+  });
+}
+async function Detail_Account(req, res) {
+  let user_id = req.params.user_id;
+  let role = req.params.role_id;
+  let user_role = await Models.RoleModel.findById({ _id: role });
+  let User = await Models.UserModel.findById({ _id: user_id });
+  return res.render("StaffPage/account/detail", {
+    data: { user: User, role: role, userRole: user_role }
+  });
+}
+function Get_Update_Account(req, res)
+{
+  let user_id = req.params.user_id
+  let role = req.params.role_id
+  Models.UserModel.findById({_id:user_id}).exec((err, user)=>{
+    return res.render('StaffPage/account/edit', {data:{user: user, role:role}})
+  })
+}
+function Post_Update_Account(req, res)
 {
   let DateTime = new Date();
   let date =
@@ -267,34 +323,34 @@ function Post_Create_Account(req, res)
     DateTime.getMinutes() +
     ":" +
     DateTime.getSeconds();
-  let form = new formidable.IncomingForm()
+  let form =  new formidable.IncomingForm()
+  let user_id = req.params.user_id
+  let role = req.params.role_id
   form.parse(req, (err, fields, files)=>{
-    let oldUrl = files.User_avatar.path
-    let newUrl = path.join(__dirname, '../../Public/images', files.User_avatar.name)
-    mv(oldUrl, newUrl, (err)=>{
-      if(err) throw err
-      fields.User_avatar = files.User_avatar.name
-      fields.Create_at = date
-      fields.Update_at = ''
-      let New_Account = new Models.UserModel(fields, {versionKey: false})
-      New_Account.save((err)=>{
-        if(err) {
-          let error = "Email already exist"
-          return res.render('StaffPage/account/create', {data:{error:error}})
-        }
-        return res.redirect("/staff/Account/"+req.params.role_id)
+    if(files.User_avatar.name){
+      let oldUrl = files.User_avatar.path
+      let newUrl = files.User_avatar.name
+      let NewPath = path.join(__dirname, "../../Public/images", newUrl)
+      mv(oldUrl, NewPath, (err)=>{
+        if(err) throw err
       })
+      fields.User_avatar = files.User_avatar.name
+    }
+    fields.Update_at = date
+    Models.UserModel.findByIdAndUpdate({_id: user_id}, fields).exec((err)=>{
+      if(err) throw err
+      return res.redirect('/staff/Account/'+ role)
     })
   })
 }
-async function Detail_Account(req, res)
+function Get_Delete_Account(req, res)
 {
   let user_id = req.params.user_id
   let role = req.params.role_id
-  let user_role = await Models.RoleModel.findById({_id: role})
-  let User = await Models.UserModel.findById({_id: user_id})
-  return res.render('StaffPage/account/detail', {data:{user: User, role:role, userRole: user_role}})
- 
+  Models.UserModel.findByIdAndDelete({_id:user_id}).exec((err)=>{
+    if(err) throw err
+    return res.redirect('/staff/Account/'+ role)
+  })
 }
 module.exports = {
   Page_Index: Page_Index,
@@ -322,5 +378,8 @@ module.exports = {
   List_Account: List_Account,
   Get_Create_Account: Get_Create_Account,
   Post_Create_Account: Post_Create_Account,
-  Detail_Account:Detail_Account
+  Detail_Account: Detail_Account,
+  Get_Update_Account: Get_Update_Account,
+  Post_Update_Account: Post_Update_Account,
+  Get_Delete_Account: Get_Delete_Account
 };
