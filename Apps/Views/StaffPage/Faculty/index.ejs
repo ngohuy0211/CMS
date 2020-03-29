@@ -24,7 +24,7 @@
                 <th></th>
             </tr>
             <tr>
-                <%for(x in data.faculty){%>
+            <%for (x in data.faculty){%>
                 <td>
                     <%=data.faculty[x].Faculty_name%>
                 </td>
@@ -46,8 +46,19 @@
                         </a>
                 </td>
             </tr>
-            <%}%>
+                <%}%>
         </table>
+    <div class="panel-footer">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="/staff/Faculty/?page=<%=data.pagePrev%>">&laquo;</a></li>
+                <%for(i=1; i<=data.totalPages; i++){%>
+                <li class="page-item"><a class="page-link" href="/staff/Faculty/?page=<%=i%>"><%=i%></a></li>
+                <%}%>
+                <li class="page-item"><a class="page-link" href="/staff/Faculty/?page=<%=data.pageNext%>">&raquo;</a></li>
+            </ul>
+        </nav>
+    </div>
     </div>
 </section>
 <!-- /.content -->

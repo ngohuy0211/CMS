@@ -38,10 +38,10 @@ async function PostLogin(req, res) {
           return res.redirect("/staff");
         }
         if (role.roleName === "Student") {
-          return res.redirect("/student");
+          return res.redirect("/user");
         }
         if (role.roleName === "Tutor") {
-          return res.redirect("/");
+          return res.redirect("/user");
         }
       });
     }

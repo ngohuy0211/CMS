@@ -6,13 +6,40 @@ const mv = require("mv");
 async function Page_Index(req, res) {
   return res.render("StaffPage/index");
 }
-function Faculty_Page(req, res) {
-  Models.FacultyModel.find({}).exec((err, faculty) => {
-    if (err) return console.log(err);
-    return res.render("StaffPage/Faculty/index", {
-      data: { faculty: faculty }
-    });
-  });
+async function Faculty_Page(req, res) {
+  if(req.query.page)
+    {
+        var page = parseInt(req.query.page)
+    }
+    else
+    {
+       var page = 1
+    }
+
+    let rowsPerPage = 2
+    let perRow = page * rowsPerPage - rowsPerPage
+    let FacultyAll = await Models.FacultyModel.find()
+    var totalRow = FacultyAll.length
+    var totalPage = Math.ceil(totalRow/rowsPerPage)
+    var pagePrev, pageNext
+    if(page - 1 <= 0)
+    {
+        pagePrev = 1
+    }
+    else
+    {
+        pagePrev = page - 1
+    }
+    if(page + 1 >= totalPage)
+    {
+        pageNext = totalPage
+    }
+    else
+    {
+        pageNext = page + 1
+    }
+    let faculty = await Models.FacultyModel.find().sort({_id: -1}).skip(perRow).limit(rowsPerPage)
+    return res.render('StaffPage/Faculty/index', {data:{faculty:faculty, totalPage:totalPage, pagePrev:pagePrev, pageNext:pageNext}})
 }
 function Staff_Profile(req, res) {
   return res.render("StaffPage/profile/profile");
@@ -63,10 +90,39 @@ function Delete_Faculty(req, res) {
 }
 async function Subject_Page(req, res) {
   let facultyId = req.params.faculty_id;
-  let subject = await Models.SubjectModel.find({ Faculty_id: facultyId });
-  return res.render("StaffPage/Subject/index", {
-    data: { subject: subject, faculty: facultyId }
-  });
+  if(req.query.page)
+    {
+        var page = parseInt(req.query.page)
+    }
+    else
+    {
+       var page = 1
+    }
+
+    let rowsPerPage = 2
+    let perRow = page * rowsPerPage - rowsPerPage
+    let SubjectAll = await Models.SubjectModel.find({Faculty_id:facultyId})
+    var totalRow = SubjectAll.length
+    var totalPage = Math.ceil(totalRow/rowsPerPage)
+    var pagePrev, pageNext
+    if(page - 1 <= 0)
+    {
+        pagePrev = 1
+    }
+    else
+    {
+        pagePrev = page - 1
+    }
+    if(page + 1 >= totalPage)
+    {
+        pageNext = totalPage
+    }
+    else
+    {
+        pageNext = page + 1
+    }
+    let subject = await Models.SubjectModel.find({Faculty_id:facultyId}).sort({_id: -1}).skip(perRow).limit(rowsPerPage)
+    return res.render('StaffPage/Subject/index', {data:{subject:subject, totalPage:totalPage, pagePrev:pagePrev, pageNext:pageNext, faculty:facultyId}})
 }
 function Get_Create_Subject(req, res) {
   let faculty_id = req.params.faculty_id;
@@ -128,10 +184,40 @@ function Get_Delete_Subject(req, res) {
 }
 async function Class_Page(req, res) {
   let Subject_id = req.params.subject_id;
-  let Class = await Models.ClassModel.find({ Subject_id: Subject_id });
-  return res.render("StaffPage/class/index", {
-    data: { class: Class, subject: Subject_id }
-  });
+  let faculty = req.params.faculty_id
+  if(req.query.page)
+    {
+        var page = parseInt(req.query.page)
+    }
+    else
+    {
+       var page = 1
+    }
+
+    let rowsPerPage = 2
+    let perRow = page * rowsPerPage - rowsPerPage
+    let ClassAll = await Models.ClassModel.find({Subject_id:Subject_id})
+    var totalRow = ClassAll.length
+    var totalPage = Math.ceil(totalRow/rowsPerPage)
+    var pagePrev, pageNext
+    if(page - 1 <= 0)
+    {
+        pagePrev = 1
+    }
+    else
+    {
+        pagePrev = page - 1
+    }
+    if(page + 1 >= totalPage)
+    {
+        pageNext = totalPage
+    }
+    else
+    {
+        pageNext = page + 1
+    }
+    let Class = await Models.ClassModel.find({Subject_id:Subject_id}).sort({_id: -1}).skip(perRow).limit(rowsPerPage)
+    return res.render('StaffPage/class/index', {data:{class:Class, totalPage:totalPage, pagePrev:pagePrev, pageNext:pageNext, subject:Subject_id, faculty: faculty}})
 }
 function Get_Create_Class(req, res) {
   return res.render("StaffPage/class/create", {
@@ -239,13 +325,41 @@ function Index_Account(req, res) {
     return res.render("StaffPage/account/index", { data: { Role: Role } });
   });
 }
-function List_Account(req, res) {
+async function List_Account(req, res) {
   let role_id = req.params.role_id;
-  Models.UserModel.find({ User_role: role_id }).exec((err, account) => {
-    return res.render("StaffPage/account/listAccount", {
-      data: { account: account, role: role_id }
-    });
-  });
+  if(req.query.page)
+    {
+        var page = parseInt(req.query.page)
+    }
+    else
+    {
+       var page = 1
+    }
+
+    let rowsPerPage = 10
+    let perRow = page * rowsPerPage - rowsPerPage
+    let UserAll = await Models.UserModel.find({User_role: role_id})
+    var totalRow = UserAll.length
+    var totalPage = Math.ceil(totalRow/rowsPerPage)
+    var pagePrev, pageNext
+    if(page - 1 <= 0)
+    {
+        pagePrev = 1
+    }
+    else
+    {
+        pagePrev = page - 1
+    }
+    if(page + 1 >= totalPage)
+    {
+        pageNext = totalPage
+    }
+    else
+    {
+        pageNext = page + 1
+    }
+    let User = await Models.UserModel.find({User_role: role_id}).sort({_id: -1}).skip(perRow).limit(rowsPerPage)
+    return res.render('StaffPage/account/listAccount', {data:{account:User, totalPage:totalPage, pagePrev:pagePrev, pageNext:pageNext, role: role_id}})
 }
 function Get_Create_Account(req, res) {
   let role = req.params.role_id;

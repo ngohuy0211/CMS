@@ -20,35 +20,39 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Exercise ID:</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">aaaaa</div>
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Your ID:</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;"> <%=locals.user[x].User_ID%></div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Exercise Name:</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">aaaaaa</div>
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Your Email:</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;"> <%=locals.user[x].User_mail%></div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Create at:</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">aaa</div>
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Your Birth</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;"> <%=locals.user[x].User_birth%></div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Deadline:</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">aaa</div>
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Your Address</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;"><%=locals.user[x].User_address%></div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Description:</label>
-                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;">aaaaaa</div>
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Your Gender</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;"> <%=locals.user[x].User_gender%></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 col-sm-3 col-xs-12 control-label">Your phone</label>
+                                    <div class="col-md-10 col-sm-9 col-xs-12" style="margin-top: 7px;"> <%=locals.user[x].User_phone%></div>
                                 </div>
                                 <%}%>
                             </fieldset>
                             <hr>
                             <div class="form-group">
                                 <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                                    <a class="btn btn-secondary" href="#">Cancel</a>
+                                    <a class="btn btn-secondary" href="/user">Cancel</a>
                                 </div>
                             </div>
                         </form>
